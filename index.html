@@ -1,13 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css">
+    <script src="src/main.js" type="module"></script>
     <title>js-goodreads</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div id="app">
+      <form>
+        <input type="text" name= "title" placeholder="Titel...">
+        <input type="text" name="author" placeholder="Författare...">
+        <input type="number" name="publishYear" placeholder="Publicerad år...">
+        <button type="submit">Lägg till</button>
+      </form>
+    </div>
   </body>
 </html>
