@@ -35,15 +35,15 @@ export async function createCards(book){
     const deleteBtn = document.createElement('button');
     wrapper.append(deleteBtn);
     // add database ID to button for easy deletion
-    const deleteID = book.getFireBaseID(); 
-    deleteBtn.id = deleteID; 
+    // const deleteID = book.getFireBaseID(); 
+    // deleteBtn.id = deleteID; 
     deleteBtn.innerText = "Radera";
 
     const patchBtn = document.createElement('button');
     wrapper.append(patchBtn);
     // add database ID to button for easy patching to correct data
-    const patchID = book.getFireBaseID(); 
-    patchBtn.id = patchID;
+    // const patchID = book.getFireBaseID(); 
+    // patchBtn.id = patchID;
     patchBtn.innerText = "Markera som läst";
 
 } 
