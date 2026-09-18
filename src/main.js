@@ -14,6 +14,7 @@ async function renderHome(){
   const books = await getAllBooks(); 
   // console.log(books);
   for(const id in books){
+    console.log(id)
     const book = new Book(id, books[id].title, books[id].author, books[id].publishYear, books[id].isRead, books[id].score );
     createCards(book);
   }
