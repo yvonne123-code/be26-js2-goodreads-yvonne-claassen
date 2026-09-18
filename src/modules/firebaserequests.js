@@ -1,7 +1,7 @@
 // import
 
 // variables
-const baseURL = "https://gritacademy-yvonne-default-rtdb.europe-west1.firebasedatabase.app/goodreads";
+export const baseURL = "https://gritacademy-yvonne-default-rtdb.europe-west1.firebasedatabase.app/goodreads";
 
 // functions 
 export async function getAllBooks(){

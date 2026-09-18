@@ -34,17 +34,35 @@ export async function createCards(book){
 
     const deleteBtn = document.createElement('button');
     wrapper.append(deleteBtn);
-    // add database ID to button for easy deletion
-    const deleteID = book.getFirebaseID(); 
-    deleteBtn.id = deleteID; 
+    deleteBtn.classList.add('delete');
     deleteBtn.innerText = "Radera";
+
+    deleteBtn.addEventListener('click', async () =>{
+        try{
+            // console.log("clicked delete")
+            await book.bookDelete();
+            wrapper.remove(); 
+
+        }
+        catch(error){
+            console.log(error); 
+        }
+    })
 
     const patchBtn = document.createElement('button');
     wrapper.append(patchBtn);
-    // add database ID to button for easy patching to correct data
-    const patchID = book.getFirebaseID();
-    // console.log(patchID); 
-    patchBtn.id = patchID;
+    patchBtn.classList.add('patch');
     patchBtn.innerText = "Markera som läst";
+
+    patchBtn.addEventListener('click', async () =>{
+        try{
+            console.log("clicked patch");
+
+
+        }
+        catch(error){
+            console.log(error);
+        }
+    })
 
 } 

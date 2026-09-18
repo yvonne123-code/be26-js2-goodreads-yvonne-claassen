@@ -1,4 +1,5 @@
 // import 
+import { baseURL } from "./firebaserequests.js";
 
 export class Book {
     #firebaseID;
@@ -17,7 +18,24 @@ export class Book {
         this.#score = score; 
     }
     // methods
+    async bookDelete(){
+        const options = {
+            method: 'DELETE'
+        };
 
+        try {
+            const response = await fetch(`${baseURL}/${this.#firebaseID}.json`, options);
+            if(!response.ok){
+                throw new Error("deletion of book did not work")
+            }
+            const data = await response.json(); 
+            return 'task deleted!'; 
+
+        }
+        catch(error){
+            console.log(error + "this comes from Book - deleteBook()"); 
+        }
+    }
     // getters
     getFirebaseID(){
         return this.#firebaseID;
