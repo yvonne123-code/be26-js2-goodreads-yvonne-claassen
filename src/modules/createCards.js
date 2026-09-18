@@ -15,6 +15,7 @@ export async function createCards(book){
 
     // createCards 
     const wrapper = document.createElement('div');
+    wrapper.classList.add('wrapper');
     app.append(wrapper);
 
     const ul = document.createElement('ul');

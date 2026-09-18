@@ -1,0 +1,33 @@
+html {
+    background-color: rgb(49, 49, 78); 
+    display: flex; 
+    justify-content: center; 
+}
+
+
+main {
+    background-color: beige; 
+    max-width: 780px;
+    padding: 60px; 
+
+}
+
+#app {
+    display: grid; 
+    /* add two grids so that the books are in one, and the potential reviews on the other  */
+
+}
+
+html li {
+    list-style-type: none; 
+}
+
+.wrapper {
+    margin: 3px;
+    border: 1px solid rgb(49, 49, 78); 
+    
+}
+
+
+
+
