@@ -24,3 +24,27 @@ export async function getAllBooks(){
     }
     
 }
+
+export async function postBook(obj){
+    const options = {
+        method: 'POST',
+        body: JSON.stringify({title: obj.title, author: obj.author, publishYear: obj.publishYear, isRead: false, score: 0 }),
+        headers: {
+            'Content-type': 'application/json'
+        } 
+    }
+
+    try {
+        const response = await fetch (`${baseURL}.json`, options);
+        if(!response.ok){
+            throw new Error("the posting of your book in postBook() did not work");
+        }
+
+        const data = await response.json(); 
+        return data; 
+
+    }
+    catch(error){
+        throw error; 
+    }
+}
