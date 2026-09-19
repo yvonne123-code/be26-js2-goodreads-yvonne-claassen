@@ -1,33 +1,52 @@
 <!doctype html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/style.css">
-    <script src="src/main.js" type="module"></script>
-    <title>js-goodreads</title>
-  </head>
-  <body>
-    <header>
 
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/style.css">
+  <script src="src/main.js" type="module"></script>
+  <title>js-goodreads</title>
+</head>
 
-    <main>
+<body>
+  <header class="container-sm text-center">
 
-      <form>
-        <input type="text" name= "title" placeholder="Titel...">
-        <input type="text" name="author" placeholder="Författare...">
-        <input type="number" name="publishYear" placeholder="Publicerad år...">
-        <button type="submit">Lägg till</button>
-      </form>
-      <div id="app">
+  </header>
+
+  <main class="container-sm text-center">
+
+
+    <form class="row justify-content-center g-3" id="input-form">
+
+      <div class="col-12 align-self-center">
+        <label class="form-label mb-0">Lägg till ny bok</label>
+      </div>
+
+      <div class="col-12 align-self-center">
+        <input type="text" name="title" placeholder="Titel..." class="form-control d-inline-block w-auto">
+        <input type="text" name="author" placeholder="Författare..." class="form-control d-inline-block w-auto">
+      </div>
+
+      <div class="col-12 align-self-center">
+        <input type="number" name="publishYear" placeholder="Publicerad år..." class="form-control d-inline-block w-auto">
         
       </div>
-    </main>
 
-    <footer>
+      <div class="col-12 align-self-center">
+        <button type="submit" class="submit">Lägg till</button>
+      </div>
+    </form>
 
-    </footer>
-  </body>
+    <div id="app" class="row justify-content-center g-3">
+
+    </div>
+  </main>
+
+  <footer class="container-sm text-center">
+
+  </footer>
+</body>
+
 </html>

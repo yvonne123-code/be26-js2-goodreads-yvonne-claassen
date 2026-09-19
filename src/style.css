@@ -1,20 +1,42 @@
-html {
-    background-color: rgb(49, 49, 78); 
-    display: flex; 
-    justify-content: center; 
-}
-
-
 main {
-    background-color: beige; 
-    max-width: 780px;
+    background-color: rgba(128, 0, 128, 0.084);
     padding: 60px; 
 
 }
 
-#app {
-    display: grid; 
-    /* add two grids so that the books are in one, and the potential reviews on the other  */
+#input-form {
+    border-bottom: solid  rgb(255, 255, 255) 2px; 
+    padding: 20px; 
+    margin-bottom: 10px; 
+}
+
+.submit {
+    background-color: rgba(128, 0, 128, 0.235);
+    border-radius: 6px;  
+    
+}
+
+.submit:hover {
+    background-color: rgba(128, 0, 128, 0.377);
+}
+
+.delete {
+    background-color: rgba(196, 6, 6, 0.572); 
+    border-radius: 6px;
+}
+
+.delete:hover {
+    background-color: rgba(196, 6, 6, 0.686); 
+
+}
+
+.patch {
+    background-color: rgba(128, 0, 128, 0.235);
+    border-radius: 6px;  
+}
+
+.patch:hover {
+    background-color: rgba(128, 0, 128, 0.377);
 
 }
 
@@ -22,11 +44,7 @@ html li {
     list-style-type: none; 
 }
 
-.wrapper {
-    margin: 3px;
-    border: 1px solid rgb(49, 49, 78); 
-    
-}
+
 
 
 

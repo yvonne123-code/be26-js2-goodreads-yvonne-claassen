@@ -2,6 +2,7 @@
 import { getAllBooks, postBook } from "./modules/firebaserequests.js";
 import { createCards } from "./modules/createCards.js";
 import { Book } from "./modules/Book.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // variables
 const home = document.getElementById('app');

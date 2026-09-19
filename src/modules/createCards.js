@@ -16,6 +16,7 @@ export async function createCards(book){
     // createCards 
     const wrapper = document.createElement('div');
     wrapper.classList.add('wrapper');
+    // wrapper.classList.add('col-12 align-self-center');
     app.append(wrapper);
 
     const ul = document.createElement('ul');
