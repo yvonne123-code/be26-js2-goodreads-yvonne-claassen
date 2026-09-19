@@ -36,6 +36,56 @@ export class Book {
             console.log(error + "this comes from Book - deleteBook()"); 
         }
     }
+    async patchBookRead() {
+        const options = {
+            method: 'PATCH',
+            body: JSON.stringify({ isRead: !this.#isRead }), 
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const response = await fetch(`${baseURL}/${this.#firebaseID}.json`, options);
+            if(!response.ok){
+                throw new Error("patching of book did not work")
+            }
+            const data = await response.json(); 
+            return 'task patched!'; 
+
+        }
+        catch(error){
+            console.log(error + "this comes from Book - patchBookRead()"); 
+        }
+
+        
+    }
+    async patchScore(number){
+        const options = {
+            method: 'PATCH',
+            body: JSON.stringify({ score: number }), 
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const response = await fetch(`${baseURL}/${this.#firebaseID}.json`, options);
+            if(!response.ok){
+                throw new Error("patching of book's score did not work")
+            }
+            const data = await response.json(); 
+            return 'score patched!'; 
+
+        }
+        catch(error){
+            console.log(error + "this comes from Book - patchScore()"); 
+        }
+
+        this.#score = score; 
+
+
+    }
     // getters
     getFirebaseID(){
         return this.#firebaseID;
@@ -55,5 +105,16 @@ export class Book {
     }
     getScore(){
         return this.#score; 
+    }
+    setScore(number){
+        if(number < 0 || number > 10){
+            return error; 
+        }
+        else{
+            this.#score = number; 
+            return true; 
+        }
+        
+
     }
 }
