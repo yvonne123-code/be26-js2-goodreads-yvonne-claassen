@@ -11,6 +11,10 @@ main {
 
 }
 
+main h2 {
+    font-size: 14px; 
+}
+
 footer {
     background-color: rgba(128, 0, 128, 0.084);
     padding: 60px;
