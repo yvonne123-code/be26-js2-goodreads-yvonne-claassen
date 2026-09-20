@@ -11,7 +11,7 @@ const form = document.querySelector('form');
 
 // functions 
 // render homepage
-async function renderHome() {
+export async function renderHome() {
 
   // render cards per book in database
   const books = await getAllBooks();

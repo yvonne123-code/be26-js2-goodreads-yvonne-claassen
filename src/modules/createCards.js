@@ -1,5 +1,6 @@
 // imports 
 import { createForm } from "./createForm.js";
+import { renderHome } from "../main.js";
 
 
 // variables
@@ -30,7 +31,7 @@ export async function createCards(book) {
     const title = document.createElement('li');
     title.classList.add('list-group-item', 'fw-bold');
     ul.append(title);
-    title.innerText = "Titel: " + book.getTitle();
+    title.innerText = book.getTitle();
 
     const author = document.createElement('li');
     author.classList.add('list-group-item', 'text-muted');
@@ -63,12 +64,12 @@ export async function createCards(book) {
         try {
             // console.log("clicked delete")
             await book.bookDelete();
-            wrapper.remove();
-
         }
         catch (error) {
             console.log(error);
         }
+        app.innerHTML = " "; 
+        renderHome(); 
     })
     if(book.getIsRead() === false){
         const form = createForm(cardBody); 
