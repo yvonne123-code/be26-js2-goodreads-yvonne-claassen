@@ -1,7 +1,9 @@
 // import 
-import { getAllBooks, postBook } from "./modules/firebaserequests.js";
+import { getAllBooks } from "./modules/firebaserequests.js";
 import { createCards } from "./modules/createCards.js";
 import { Book } from "./modules/Book.js";
+import { searchBooks } from "./modules/APIrequests.js";
+import { createSearchCards } from "./modules/createSearchCards.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // variables
@@ -10,8 +12,10 @@ const form = document.querySelector('form');
 
 
 // functions 
-// render homepage
+
 export async function renderHome() {
+  // reset form
+  form.reset(); 
 
   // render cards per book in database
   const books = await getAllBooks();
@@ -25,24 +29,28 @@ export async function renderHome() {
 }
 renderHome();
 
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
+// search for books using API 
 
+form.addEventListener('submit', async(event) =>{
+  event.preventDefault(); 
+  
   const formData = new FormData(form);
   const formObj = Object.fromEntries(formData.entries());
-  
-  console.log(formObj);
+  // const stringSearch = JSON.stringify(formObj);
 
-  try{
-    await postBook(formObj);
-    form.reset();
+  try {
+    const books = await searchBooks(formObj); 
+
+    // render ten books max 
+    createSearchCards(books);
     
   }
   catch(error){
     console.log(error);
   }
-   
-  home.innerHTML = ""; 
-  renderHome(); 
+
+  
 })
+
+
 

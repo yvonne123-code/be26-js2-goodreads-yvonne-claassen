@@ -71,6 +71,9 @@ export async function createCards(book) {
         app.innerHTML = " "; 
         renderHome(); 
     })
+
+    if(book.getIsRead() === false){
+        const form = createForm(cardBody);         
     // patch buttons
     const readBtn = document.createElement('button');
     readBtn.classList.add('patch');
