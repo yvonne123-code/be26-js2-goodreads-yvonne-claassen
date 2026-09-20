@@ -2,6 +2,7 @@
 import { getAllBooks, postBook } from "./modules/firebaserequests.js";
 import { createCards } from "./modules/createCards.js";
 import { Book } from "./modules/Book.js";
+import { searchBooks } from "./modules/APIrequests.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // variables
@@ -25,24 +26,44 @@ export async function renderHome() {
 }
 renderHome();
 
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
+// search for books
 
+form.addEventListener('submit', async(event) =>{
+  event.preventDefault(); 
+  
   const formData = new FormData(form);
   const formObj = Object.fromEntries(formData.entries());
-  
-  console.log(formObj);
+  // const stringSearch = JSON.stringify(formObj);
 
-  try{
-    await postBook(formObj);
-    form.reset();
-    
+  try {
+    const books = await searchBooks(formObj); 
+
+
   }
   catch(error){
     console.log(error);
+
   }
-   
-  home.innerHTML = ""; 
-  renderHome(); 
 })
+
+// form.addEventListener('submit', async (event) => {
+//   event.preventDefault();
+
+//   const formData = new FormData(form);
+//   const formObj = Object.fromEntries(formData.entries());
+  
+//   console.log(formObj);
+
+//   try{
+//     await postBook(formObj);
+//     form.reset();
+    
+//   }
+//   catch(error){
+//     console.log(error);
+//   }
+   
+//   home.innerHTML = ""; 
+//   renderHome(); 
+// })
 

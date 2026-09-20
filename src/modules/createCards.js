@@ -71,9 +71,9 @@ export async function createCards(book) {
         app.innerHTML = " "; 
         renderHome(); 
     })
+
     if(book.getIsRead() === false){
-        const form = createForm(cardBody); 
-        
+        const form = createForm(cardBody);         
         
         form.addEventListener('submit', async (event) => {
             event.preventDefault(); 
