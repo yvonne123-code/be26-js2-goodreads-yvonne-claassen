@@ -1,8 +1,3 @@
-// imports 
-
-
-// functions 
-
 export function createForm(wrapper) {
 
     const scoreForm = document.createElement('form');

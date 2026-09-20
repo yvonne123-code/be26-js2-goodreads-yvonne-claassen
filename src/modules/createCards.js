@@ -54,7 +54,7 @@ export async function createCards(book) {
         score.innerText = "Betyg: Inte läst klart än."
     }
 
-    // buttons
+    // delete button
     const deleteBtn = document.createElement('button');
     cardBody.append(deleteBtn);
     deleteBtn.classList.add('delete', 'd-block', 'mx-auto');
@@ -71,7 +71,18 @@ export async function createCards(book) {
         app.innerHTML = " "; 
         renderHome(); 
     })
+    // patch buttons
+    const readBtn = document.createElement('button');
+    readBtn.classList.add('patch');
+    readBtn.innerText = "Markera som läst";
+    
+
     if(book.getIsRead() === false){
+        cardBody.append(readBtn);
+    }
+
+    if(book.getIsRead() === true && book.getScore() === 0){
+        readBtn.remove(); 
         const form = createForm(cardBody); 
         
         
@@ -81,8 +92,7 @@ export async function createCards(book) {
             const formData = new FormData(form);
             const review = parseInt(formData.get('scoreInput'), 10);
 
-            try {
-                await book.patchBookRead(); 
+            try { 
                 await book.patchScore(review);
                 book.setScore(review);
 
@@ -98,6 +108,20 @@ export async function createCards(book) {
             
         } )
     }
+    
+    readBtn.addEventListener('click', async (event) => {
+        event.preventDefault(); 
+        try{
+            await book.patchBookRead(); 
+
+        }
+        catch(error){
+            console.log(error);
+        }
+        app.innerHTML = " "; 
+        renderHome();
+
+    })
 
     
 
