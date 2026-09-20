@@ -42,12 +42,14 @@ form.addEventListener('submit', async(event) =>{
     const books = await searchBooks(formObj); 
 
     // render ten books max 
-    createSearchCards(books); 
-
+    createSearchCards(books);
+    
   }
   catch(error){
     console.log(error);
   }
+
+  
 })
 
 

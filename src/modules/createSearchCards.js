@@ -56,7 +56,27 @@ export function createSearchCards(books) {
         addBtn.classList.add('patch');
         cardBody.append(addBtn);
 
-        // post using button
+        // post using button for found book
+
+        addBtn.addEventListener('click', async (event) =>{
+            const chosenBook = {
+                title: title,
+                author: author,
+                isRead: false,
+                publishYear: yearPublished,
+                score: 0
+            };
+
+            try{
+                await postBook(chosenBook);
+                app.innerHTML = " ";
+                renderHome(); 
+
+            }
+            catch(error){
+                console.log(error);
+            }
+        })
 
 
 
