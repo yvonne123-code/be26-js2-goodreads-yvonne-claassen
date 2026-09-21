@@ -1,9 +1,3 @@
-// imports 
-
-// variables 
-const app = document.getElementById('app');
-
-
 // functions 
 
 export function createForm(wrapper) {
@@ -47,15 +41,6 @@ export function createManualForm() {
     
     const manualForm = document.createElement('form');
     manualForm.classList.add('row', 'g-3', 'text-center');
-
-    // const div = document.createElement('div');
-    // div.classList.add('col-12', 'align-self-center', 'justify-content-center');
-    // manualForm.append(div);
-
-    // const label = document.createElement('label');
-    // label.innerText = "Lägg till boken manuellt:";
-    // label.classList.add('form-label', 'mb-0');
-    // div.append(label);
 
     const div2 = document.createElement('div');
     div2.classList.add('col-6', 'align-self-center', 'justify-content-center');

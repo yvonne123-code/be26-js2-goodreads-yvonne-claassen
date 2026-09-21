@@ -10,7 +10,7 @@ const app = document.getElementById('app');
 export async function createCards(book) {
 
 
-    // createCards 
+    // createCards per book
 
     const card = document.createElement('div');
     card.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mb-4');
@@ -54,7 +54,7 @@ export async function createCards(book) {
         score.innerText = "Betyg: Inte läst klart än."
     }
 
-    // delete button
+    // delete button and event
     const deleteBtn = document.createElement('button');
     cardBody.append(deleteBtn);
     deleteBtn.classList.add('delete', 'd-block', 'mx-auto');
@@ -72,7 +72,7 @@ export async function createCards(book) {
         renderHome(); 
     })
       
-    // patch buttons
+    // patch buttons and events
     const readBtn = document.createElement('button');
     readBtn.classList.add('patch');
     readBtn.innerText = "Markera som läst";
@@ -82,8 +82,23 @@ export async function createCards(book) {
         cardBody.append(readBtn);
     }
 
+    readBtn.addEventListener('click', async (event) => {
+        event.preventDefault(); 
+        try{
+            await book.patchBookRead(); 
+
+        }
+        catch(error){
+            console.log(error);
+        }
+        app.innerHTML = " "; 
+        renderHome();
+
+    })
+
     if(book.getIsRead() === true && book.getScore() === 0){
         readBtn.remove(); 
+        score.innerText= "Läst men inte betygsatt";
         const form = createForm(cardBody); 
         
         
@@ -109,22 +124,5 @@ export async function createCards(book) {
             
         } )
     }
-
-    
-    readBtn.addEventListener('click', async (event) => {
-        event.preventDefault(); 
-        try{
-            await book.patchBookRead(); 
-
-        }
-        catch(error){
-            console.log(error);
-        }
-        app.innerHTML = " "; 
-        renderHome();
-
-    })
-
-    
 
 } 

@@ -7,14 +7,13 @@ import { createSearchCards } from "./modules/createSearchCards.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // variables
-const home = document.getElementById('app');
 const form = document.querySelector('form');
 
 
 // functions 
 
 export async function renderHome() {
-  // reset form
+  // reset form for when returning to Home
   form.reset(); 
 
   // render cards per book in database
@@ -41,7 +40,7 @@ form.addEventListener('submit', async(event) =>{
   try {
     const books = await searchBooks(formObj); 
 
-    // render ten books max 
+    // render ten books max. 
     createSearchCards(books);
     
   }

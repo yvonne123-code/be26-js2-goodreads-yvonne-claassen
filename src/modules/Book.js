@@ -106,6 +106,7 @@ export class Book {
     getScore(){
         return this.#score; 
     }
+    // setters
     setScore(number){
         if(number < 0 || number > 10){
             return error; 

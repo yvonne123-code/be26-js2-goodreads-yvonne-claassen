@@ -18,18 +18,18 @@ export async function searchBooks(searchWord) {
     wrapper.append(cardBody);
     console.log(searchWord);
 
-
-
-    // API fetch
+    // API fetch search word creation
     const search = searchWord.title;
-    console.log(search);
+    // console.log(search);
+
+    // ADD: feature for checking that the search word is viable
 
     const parameters = new URLSearchParams({
         q: search
     });
 
-    console.log(parameters.toString());
-
+    // console.log(parameters.toString());
+    // API fetch
     try {
         const response = await fetch(`https://openlibrary.org/search.json?${parameters.toString()}`);
         if (!response.ok) {
@@ -42,6 +42,7 @@ export async function searchBooks(searchWord) {
     }
     catch (error) {
         console.log(error);
+        // ADD: feature letting the client know that nothing got fetched... ?
     }
 
 

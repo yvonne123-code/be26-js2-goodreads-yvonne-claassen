@@ -5,14 +5,14 @@ import { postBook } from "./firebaserequests.js";
 
 
 // variables 
-const app = document.getElementById('app');
+const home = document.getElementById('app');
 
 // functions
 export function createSearchCards(books) {
+    // book(s) found
+    home.innerText = " ";
 
-    app.innerText = " ";
-
-    // only ten cards for now
+    // only ten cards/books for now
     const tenBooks = books.docs.slice(0, 10);
 
     tenBooks.forEach(result => {
@@ -22,7 +22,7 @@ export function createSearchCards(books) {
 
         const card = document.createElement('div');
         card.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mb-4');
-        app.append(card);
+        home.append(card);
 
         const wrapper = document.createElement('div');
         wrapper.classList.add('card', 'h-100', 'shadow-sm', 'text-center');
@@ -58,7 +58,7 @@ export function createSearchCards(books) {
 
         // post using button for found book
 
-        addBtn.addEventListener('click', async (event) =>{
+        addBtn.addEventListener('click', async (event) => {
             const chosenBook = {
                 title: title,
                 author: author,
@@ -67,13 +67,15 @@ export function createSearchCards(books) {
                 score: 0
             };
 
-            try{
+            // ADD: feature for checking if the book is already in database/user's bookshelf...? 
+
+            try {
                 await postBook(chosenBook);
-                app.innerHTML = " ";
-                renderHome(); 
+                home.innerHTML = " ";
+                renderHome();
 
             }
-            catch(error){
+            catch (error) {
                 console.log(error);
             }
         })
@@ -82,11 +84,11 @@ export function createSearchCards(books) {
 
     })
 
-    // book not found
+    // client doesn't find a book they want to add to their bookshelf
     const newDiv = document.createElement('div');
     newDiv.classList.add('row', 'justify-content-center');
-    app.append(newDiv);
-    
+    home.append(newDiv);
+
     const card = document.createElement('div');
     card.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mb-4');
     newDiv.append(card);
@@ -109,7 +111,7 @@ export function createSearchCards(books) {
     // form for manual adding of book 
 
     const manualForm = createManualForm();
-    cardBody.append(manualForm); 
+    cardBody.append(manualForm);
 
     manualForm.addEventListener('submit', async (event) => {
 
@@ -126,7 +128,7 @@ export function createSearchCards(books) {
             console.log(error);
         }
 
-        app.innerHTML = "";
+        home.innerHTML = "";
         renderHome();
     })
 
