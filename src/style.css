@@ -1,3 +1,9 @@
+.home:hover {
+    cursor: pointer; 
+    color: rgba(128, 0, 128, 0.235);
+
+}
+
 header {
     background-color: rgba(128, 0, 128, 0.084);
     padding: 60px;
@@ -18,12 +24,6 @@ main h2 {
 footer {
     background-color: rgba(128, 0, 128, 0.084);
     padding: 60px;
-}
-
-#input-form {
-    border-bottom: solid  rgb(255, 255, 255) 1px; 
-    padding-bottom: 60px; 
-    margin-bottom: 60px; 
 }
 
 

@@ -1,12 +1,7 @@
-// variables
 export const baseURL = "https://gritacademy-yvonne-default-rtdb.europe-west1.firebasedatabase.app/goodreads";
 
-// functions 
-export async function getAllBooks(){
-    // test
-    // console.log("getAllBooks function")
 
-    // GET 
+export async function getAllBooks(){
     try {
         const response = await fetch (`${baseURL}.json`);
         if(!response.ok){
@@ -22,7 +17,7 @@ export async function getAllBooks(){
     }
     
 }
-// POST
+
 export async function postBook(obj){
     const options = {
         method: 'POST',

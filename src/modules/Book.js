@@ -1,5 +1,5 @@
 // import 
-import { baseURL } from "./firebaserequests.js";
+import { baseURL } from "./firebaseRequests.js";
 
 export class Book {
     #firebaseID;

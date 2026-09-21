@@ -1,6 +1,4 @@
-// functions 
-
-export function createForm(wrapper) {
+export function createScoringForm(wrapper) {
 
     const scoreForm = document.createElement('form');
     scoreForm.classList.add('row', 'g-2', 'text-center', 'mt-2');

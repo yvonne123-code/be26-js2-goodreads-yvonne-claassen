@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/book.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="src/style.css">
   <script src="src/main.js" type="module"></script>
@@ -17,12 +17,7 @@
       <h1>Din Virtuella Bokhylla</h1>
     </div>
 
-  </header>
-
-  <main class="container-sm text-center" id="main">
-
-
-    <form class="row justify-content-center g-3" id="input-form">
+    <form class="row justify-content-center g-3">
 
       <div class="col-12 align-self-center">
         <label class="form-label mb-0">Sök böcker att lägga till...</label>
@@ -30,19 +25,16 @@
 
       <div class="col-12 align-self-center">
         <input type="text" name="title" placeholder="Titel..." class="form-control d-inline-block w-auto">
-        <!-- <input type="text" name="author" placeholder="Författare..." class="form-control d-inline-block w-auto"> -->
       </div>
-
-      <!-- <div class="col-12 align-self-center">
-        <input type="number" name="publishYear" placeholder="Publicerad år..." class="form-control d-inline-block w-auto">
-        
-      </div> -->
 
       <div class="col-12 align-self-center">
         <button type="submit" class="submit">Sök</button>
       </div>
     </form>
 
+  </header>
+
+  <main class="container-sm text-center" id="main">
     <div id="app" class="row justify-content-center g-4">
 
     </div>
@@ -52,7 +44,11 @@
 
     <div class="col-12 align-self-center">
 
-      <h2>Av Yvonne</h2>
+      <p> skapad av Yvonne Claassen för Grit Academy JS2 med hjälp av</p>
+      <a href="https://openlibrary.org/dev/docs/api/search" target="_blank"
+        class="text-secondary text-decoration-none">
+        Open Library API
+      </a>
 
     </div>
 

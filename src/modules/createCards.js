@@ -1,20 +1,19 @@
-// imports 
-import { createForm } from "./createForm.js";
+import { createScoringForm } from "./createForms.js";
 import { renderHome } from "../main.js";
+import { createReadBtn, createDeleteBtn } from "./createButtons.js";
+import { createList, createListItem, createListItemBold } from "./createListItems.js";
+import { manuallyAddBook } from "./manuallyAddBook.js";
 
+const home = document.getElementById('app');
 
-// variables
-const app = document.getElementById('app');
-
-// functions 
-export async function createCards(book) {
-
-
-    // createCards per book
+export function createCardBody() {
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('row', 'justify-content-center');
+    home.append(newDiv);
 
     const card = document.createElement('div');
     card.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mb-4');
-    app.append(card);
+    newDiv.append(card);
 
     const wrapper = document.createElement('div');
     wrapper.classList.add('card', 'h-100', 'shadow-sm', 'text-center');
@@ -24,105 +23,97 @@ export async function createCards(book) {
     cardBody.classList.add('card-body', 'p-2');
     wrapper.append(cardBody);
 
-    const ul = document.createElement('ul');
-    ul.classList.add('list-group', 'list-group-flush', 'mb-3', 'text-center');
+    return cardBody;
+}
+
+export async function createBookCard(book) {
+
+    const cardBody = createCardBody();
+
+    const ul = createList(); 
     cardBody.append(ul);
 
-    const title = document.createElement('li');
-    title.classList.add('list-group-item', 'fw-bold');
-    ul.append(title);
+    const title = createListItemBold(ul);
     title.innerText = book.getTitle();
 
-    const author = document.createElement('li');
-    author.classList.add('list-group-item', 'text-muted');
-    ul.append(author);
+    const author = createListItem(ul);
     author.innerText = "Författare: " + book.getAuthor();
 
-    const publishYear = document.createElement('li');
-    publishYear.classList.add('list-group-item', 'text-muted');
-    ul.append(publishYear);
+    const publishYear = createListItem(ul);
     publishYear.innerText = "Publicerad: " + book.getPublishYear();
 
-    const score = document.createElement('li');
-    score.classList.add('list-group-item', 'text-muted');
-    ul.append(score);
+    const score = createListItem(ul);
 
-    if (book.getScore() > 0 ){
+    if (book.getScore() > 0) {
         score.innerText = "Betyg: " + book.getScore();
     }
     else {
         score.innerText = "Betyg: Inte läst klart än."
     }
 
-    // delete button and event
-    const deleteBtn = document.createElement('button');
+    const deleteBtn = createDeleteBtn();
     cardBody.append(deleteBtn);
-    deleteBtn.classList.add('delete', 'd-block', 'mx-auto');
-    deleteBtn.innerText = "Radera Bok";
 
     deleteBtn.addEventListener('click', async () => {
         try {
-            // console.log("clicked delete")
             await book.bookDelete();
         }
         catch (error) {
             console.log(error);
         }
-        app.innerHTML = " "; 
-        renderHome(); 
-    })
-      
-    // patch buttons and events
-    const readBtn = document.createElement('button');
-    readBtn.classList.add('patch');
-    readBtn.innerText = "Markera som läst";
-    
-
-    if(book.getIsRead() === false){
-        cardBody.append(readBtn);
-    }
-
-    readBtn.addEventListener('click', async (event) => {
-        event.preventDefault(); 
-        try{
-            await book.patchBookRead(); 
-
-        }
-        catch(error){
-            console.log(error);
-        }
-        app.innerHTML = " "; 
+        home.innerHTML = " ";
         renderHome();
-
     })
 
-    if(book.getIsRead() === true && book.getScore() === 0){
-        readBtn.remove(); 
-        score.innerText= "Läst men inte betygsatt";
-        const form = createForm(cardBody); 
-        
-        
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault(); 
+    if (book.getIsRead() === false) {
+        const readBtn = createReadBtn();
+        cardBody.append(readBtn);
 
-            const formData = new FormData(form);
-            const review = parseInt(formData.get('scoreInput'), 10);
-
-            try { 
-                await book.patchScore(review);
-                book.setScore(review);
-
-                form.remove(); 
-                
-
+        readBtn.addEventListener('click', async (event) => {
+            event.preventDefault();
+            try {
+                await book.patchBookRead();
             }
-            catch(error){
+            catch (error) {
                 console.log(error);
             }
+            // rendering Home anew because we need the code to re-process the if statements in this current build of code
+            // ADD: updated code to avoid re-rendering? 
+            home.innerHTML = " ";
+            renderHome();
+        });
+    }
+    else if(book.getIsRead() === true && book.getScore() === 0) {
+        score.innerText = "Läst men inte betygsatt";
+        const scoringForm = createScoringForm(cardBody);
 
-            score.innerText = "Betyg: " + book.getScore(); 
-            
-        } )
+
+        scoringForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(scoringForm);
+            const review = parseInt(formData.get('scoreInput'), 10);
+
+            try {
+                await book.patchScore(review);
+                book.setScore(review);
+                scoringForm.remove();
+            }
+            catch (error) {
+                console.log(error);
+            }
+            score.innerText = "Betyg: " + book.getScore();
+        })
     }
 
 } 
+
+export async function createErrorCard() {
+    home.innerText = " ";
+    const cardBody = createCardBody();
+    const text = document.createElement('h2');
+    text.innerText = "Inga böcker hittades";
+    cardBody.append(text);
+    
+    manuallyAddBook(); 
+}
