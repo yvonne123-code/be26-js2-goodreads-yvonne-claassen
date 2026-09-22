@@ -1,6 +1,6 @@
 import { getAllBooks } from "./modules/databaseCommunications/firebaseRequests.js";
 import { createBookCard } from "./modules/elementCreations/createCards.js";
-import { Book } from "./modules/Book.js";
+import { Book } from "./modules/class/Book.js";
 import { searchBooks } from "./modules/databaseCommunications/openLibraryRequest.js";
 import { createSearchCard } from "./modules/elementCreations/createSearchResultCard.js";
 import { manuallyAddBook } from "./modules/elementCreations/manuallyAddBook.js";

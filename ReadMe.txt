@@ -17,42 +17,38 @@ CODE STRUCTURE
     - starts the application and listens for any client based interactions with the website. 
     - the client can search for books, mark their books as read, score read books, and delete books. 
 
-- modules / Book.js 
-    - the class Book is written here with relevant methods, getters and setters. 
+- modules / class /
+    - Book.js 
+        - the class Book is written here with relevant methods, getters and setters. 
 
-- modules / createButtons.js
-    - functions that handle the creation of various buttons
+- modules / elementCreations /
+    - createButtons.js
+        - functions that handle the creation of various buttons
+    - createCards.js
+        - functions that handle the creation and rendering of various cards 
+            - includes a basic card creation function 
+            - includes rendering of bookshelf
+            - does NOT handle the creation of search result cards. 
+    - createForms.js
+        - functions that handle the creation of various forms necessary
+            - includes manually posting books form
+            - includes the API search form
+    - createListItems.js
+        - functions that handle the creation of various and basic lists and list items
+    - createSearchResultCard
+        - one function that handles the creation of search result cards (10 of them)
+            - placed in a separate file since there are many event listeners and the code got large
+    - loadingState.js
+        - one function for creating a loading state rendered to the client
+        - currently only in use for when the client has searched for books 
+    - manuallyAddBook.js
+        - renders information on posting books manually together with the form for the client to do so
 
-- modules / createCards.js
-    - functions that handle the creation and rendering of various cards 
-        - includes a basic card creation function 
-        - includes rendering of bookshelf
-    - does NOT handle the creation of search result cards. 
-
-- modules / createForms.js
-    - functions that handle the creation of various forms necessary
-        - includes manually posting books form
-        - includes the API search form
-
-- modules / createListItems.js
-    - functions that handle the creation of various and basic lists and list items
-
-- modules / createSearchResultCard
-    - one function that handles the creation of search result cards (10 of them)
-        - placed in a separate file since there are many event listeners and the code got large
-
-- modules / firebaseRequests.js 
-    - handles POST and GET for database communication
-
-- modules / loadingState.js
-    - one function for creating a loading state rendered to the client
-    - currently only in use for when the client has searched for books 
-
-- modules / manuallyAddBook.js
-    - renders information on posting books manually together with the form for the client to do so
-
-- modules / openLibraryRequests.js
-    - handles the fetching of books based on user's search word(s)
+- modules / databaseCommunications /
+    - firebaseRequests.js 
+        - handles POST and GET for database communication
+    - openLibraryRequests.js
+        - handles the fetching of books based on user's search word(s)
 
 
 
