@@ -5,7 +5,8 @@ export async function searchBooks(searchWord) {
     const home = document.getElementById('app');
 
     loadingState(); 
-    const search = searchWord.title;
+    const search = searchWord.title.toLowerCase();
+
 
     // ADD: feature for checking that the search word is viable
 
