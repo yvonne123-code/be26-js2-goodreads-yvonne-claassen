@@ -1,4 +1,4 @@
-import { loadingState } from "./loadingState.js";
+import { loadingState } from "../elementCreations/loadingState.js";
 
 export async function searchBooks(searchWord) {
 

@@ -1,5 +1,5 @@
 import { createScoringForm } from "./createForms.js";
-import { renderHome } from "../main.js";
+import { renderHome } from "../../main.js";
 import { createReadBtn, createDeleteBtn } from "./createButtons.js";
 import { createList, createListItem, createListItemBold } from "./createListItems.js";
 import { manuallyAddBook } from "./manuallyAddBook.js";

@@ -1,7 +1,7 @@
 import { createManualForm } from "./createForms.js";
 import { createCardBody } from "./createCards.js";
-import { postBook } from "./firebaseRequests.js";
-import { renderHome } from "../main.js";
+import { postBook } from "../databaseCommunications/firebaseRequests.js";
+import { renderHome } from "../../main.js";
 
 const home = document.getElementById('app');
 

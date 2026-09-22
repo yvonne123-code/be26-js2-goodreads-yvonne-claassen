@@ -1,9 +1,9 @@
-import { getAllBooks } from "./modules/firebaseRequests.js";
-import { createBookCard } from "./modules/createCards.js";
+import { getAllBooks } from "./modules/databaseCommunications/firebaseRequests.js";
+import { createBookCard } from "./modules/elementCreations/createCards.js";
 import { Book } from "./modules/Book.js";
-import { searchBooks } from "./modules/openLibraryRequest.js";
-import { createSearchCard } from "./modules/createSearchResultCard.js";
-import { manuallyAddBook } from "./modules/manuallyAddBook.js";
+import { searchBooks } from "./modules/databaseCommunications/openLibraryRequest.js";
+import { createSearchCard } from "./modules/elementCreations/createSearchResultCard.js";
+import { manuallyAddBook } from "./modules/elementCreations/manuallyAddBook.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const searchBooksForm = document.querySelector('form');

@@ -1,5 +1,5 @@
-import { renderHome } from "../main.js";
-import { postBook } from "./firebaseRequests.js";
+import { renderHome } from "../../main.js";
+import { postBook } from "../databaseCommunications/firebaseRequests.js";
 import { createCardBody } from "./createCards.js";
 import { createPostBtn} from "./createButtons.js";
 import { createListItem, createListItemBold, createList } from "./createListItems.js";
